@@ -1,0 +1,54 @@
+package cn.sh.yhk;
+
+import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+/**
+ * 扫描所有controller的url 另web项目完全启动后执行的类 随便 干
+ * 
+ * @ClassName: WindupApplication
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @author AdminYHK(Yanghongkang)
+ * @date 2016年6月27日 上午10:48:51
+ *
+ */
+@Component
+public class WindupApplication implements ApplicationListener<ContextRefreshedEvent> {
+
+	private static Logger log = Logger.getLogger(WindupApplication.class);
+
+	@Autowired
+	private RequestMappingHandlerMapping handlerMapping;
+
+	public void onApplicationEvent(ContextRefreshedEvent event) {
+		if (event.getApplicationContext().getParent() == null) {
+			this.searchUrl(event);
+			/* RubbitMQ mq= new RubbitMQ("AdminYhk_test"); */
+			/*RubbitMQ mq = new RubbitMQ("hello");
+			Thread thred = new Thread(mq);
+			thred.start();
+			log.info("MQ Starting");*/
+		}
+	}
+
+	final private void searchUrl(ContextRefreshedEvent event) {
+		Map map = this.handlerMapping.getHandlerMethods();
+		Iterator<?> iterator = map.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry entry = (Map.Entry) iterator.next();
+			String uri = entry.getKey().toString();
+			// String url = uri.substring(2, uri.indexOf(".do")) + ".do";
+			log.info("ActionUrl" + uri);
+			// System.out.println(uri = uri.substring(uri.indexOf("/"),
+			// uri.length() - 2));
+		}
+	}
+
+}
