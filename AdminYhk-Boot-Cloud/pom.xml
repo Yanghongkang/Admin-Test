@@ -18,9 +18,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <modules>
-  	<module>AdminYhk-Web</module>
   	<module>AdminYhk-Service</module>
   	<module>AdminYhk-Repository</module>
   	<module>AdminYhk-Eureka</module>
+  	<module>AdminYhk-Web</module>
   </modules>
 </project>
