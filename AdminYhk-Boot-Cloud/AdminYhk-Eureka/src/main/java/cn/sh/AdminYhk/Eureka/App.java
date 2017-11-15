@@ -1,4 +1,4 @@
-package org.AdminYhk.Eureka;
+package cn.sh.AdminYhk.Eureka;
 
 /**
  * Hello world!
