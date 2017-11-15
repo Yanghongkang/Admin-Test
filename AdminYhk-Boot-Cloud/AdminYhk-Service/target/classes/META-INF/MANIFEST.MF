@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+Implementation-Title: AdminYhk-Service
+Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: AdminYHK
+Implementation-Vendor-Id: cn.sh.yhk
 Build-Jdk: 1.8.0
+Implementation-URL: http://maven.apache.org
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 
