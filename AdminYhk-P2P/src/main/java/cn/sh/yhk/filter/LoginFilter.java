@@ -91,25 +91,24 @@ public class LoginFilter implements Filter {
 						if (!ysessionObj.getSessionId().equals(httpRequest.getSession().getId())) {// 不同sessionID
 							// 去除先前登陆信息
 							ysessionObj.getSession().invalidate();
-							//删除原session信息
+							// 删除原session信息
 							adminYhkssoResultMap.removeLoginUserMap(key);
-							//添加新session
-							adminYhkssoResultMap.setLoginUserMap(user,httpRequest.getSession(), httpRequest.getSession()
-									.getAttribute(AdminYhkCommonConstant.SESSION_LOGIN_VCODE).toString());
+							// 添加新session
+							adminYhkssoResultMap.setLoginUserMap(user, httpRequest.getSession(), httpRequest
+									.getSession().getAttribute(AdminYhkCommonConstant.SESSION_LOGIN_VCODE).toString());
 						}
 					} else {
-						adminYhkssoResultMap.setLoginUserMap(user,httpRequest.getSession(), httpRequest.getSession()
+						adminYhkssoResultMap.setLoginUserMap(user, httpRequest.getSession(), httpRequest.getSession()
 								.getAttribute(AdminYhkCommonConstant.SESSION_LOGIN_VCODE).toString());
 					}
 					// SSO結束
 
 					httpRequest.getSession().setAttribute(AdminYhkCommonConstant.SESSION_SYS_USER, user);
-					httpResponse.sendRedirect("/weclome");
-				/*	loginresponse.setSuccess(true);
-					loginresponse.setMessage("登陆成功");
-					write.println(JSON.toJSONString(loginresponse));
-					write.close();
-					*/
+					httpResponse.sendRedirect("/home/weclome");
+					/*
+					 * loginresponse.setSuccess(true); loginresponse.setMessage("登陆成功");
+					 * write.println(JSON.toJSONString(loginresponse)); write.close();
+					 */
 					return;
 				} else {
 					loginresponse.setSuccess(false);

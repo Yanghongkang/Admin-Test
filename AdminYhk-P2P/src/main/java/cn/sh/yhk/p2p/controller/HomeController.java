@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.sh.yhk.commone.AdminYhkBaseController;
 
 @Controller
+@RequestMapping("/home")
 public class HomeController extends AdminYhkBaseController {
 
 	protected static Logger logger = LoggerFactory.getLogger(HomeController.class);
