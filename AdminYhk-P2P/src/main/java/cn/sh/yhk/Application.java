@@ -1,5 +1,6 @@
 package cn.sh.yhk;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @ServletComponentScan
 @Configuration
+@MapperScan("cn.sh.yhk.p2p.mapper")
 public class Application implements EmbeddedServletContainerCustomizer {
 
 	public static void main(String[] args) {

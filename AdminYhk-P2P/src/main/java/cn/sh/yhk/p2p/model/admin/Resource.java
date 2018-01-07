@@ -1,19 +1,8 @@
-package cn.sh.yhk.p2p.model;
+package cn.sh.yhk.p2p.model.admin;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-@Entity
-@Table(name = "t_resource")
 public class Resource {
-	@Id
-	@GeneratedValue
 	private long id;
 
 	private String name;
@@ -22,10 +11,8 @@ public class Resource {
 	private String url;
 	private String status;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
 	public long getId() {

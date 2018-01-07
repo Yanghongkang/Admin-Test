@@ -24,8 +24,7 @@ import cn.sh.yhk.commone.AdminYhkCommonConstant;
 import cn.sh.yhk.commone.AdminYhkResponseData;
 import cn.sh.yhk.commone.plugins.sso.AdminYhkSsoObject;
 import cn.sh.yhk.commone.plugins.sso.AdminYhkSsoResultMap;
-import cn.sh.yhk.p2p.dao.UserDao;
-import cn.sh.yhk.p2p.model.User;
+import cn.sh.yhk.p2p.model.admin.User;
 import cn.sh.yhk.util.MD5Util;
 
 @WebFilter(filterName = "LoginFilter", urlPatterns = "/login")
@@ -34,7 +33,7 @@ public class LoginFilter implements Filter {
 	protected static Logger logger = LoggerFactory.getLogger(LoginFilter.class);
 
 	@Autowired
-	private UserDao userdao;
+	//private UserDao userdao;
 
 	public static final String LOGIN_ERROR_NOUSER = "用户名未注册";
 
@@ -78,7 +77,8 @@ public class LoginFilter implements Filter {
 		}
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
-		User user = userdao.findByUserName(name);
+		//User user = userdao.findByUserName(name);
+		User user= new User();
 		Enumeration<String> ss = httpRequest.getSession().getAttributeNames();
 		System.out.println(ss.nextElement());
 		try {

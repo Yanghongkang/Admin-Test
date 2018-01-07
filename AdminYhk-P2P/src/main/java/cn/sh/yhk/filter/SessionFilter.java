@@ -48,27 +48,30 @@ public class SessionFilter implements Filter {
 		String contextPath = (String) ((HttpServletRequest) request).getContextPath();
 		String ServletPath = (String) ((HttpServletRequest) request).getServletPath();
 		HttpServletRequest hRequest = (HttpServletRequest) request;
-		//SSO
-//		User user =  (User)hRequest.getSession().getAttribute(AdminYhkCommonConstant.SESSION_SYS_USER);
-//		String key = user.getUserNo() + user.getId() + user.getUserPwd().substring(10);
-//		String val = sooResultMap.getLoginUserMap(key);
-//		String[] vals = val.split("@");
-//		String session = vals[1];
-//		if(!hRequest.getSession().getId().equals(session)){
-//			((HttpServletResponse) response).sendRedirect(contextPath + "/gologin?sessionid="+null);
-//		}
-		//SSO
+		// SSO
+		// User user =
+		// (User)hRequest.getSession().getAttribute(AdminYhkCommonConstant.SESSION_SYS_USER);
+		// String key = user.getUserNo() + user.getId() +
+		// user.getUserPwd().substring(10);
+		// String val = sooResultMap.getLoginUserMap(key);
+		// String[] vals = val.split("@");
+		// String session = vals[1];
+		// if(!hRequest.getSession().getId().equals(session)){
+		// ((HttpServletResponse) response).sendRedirect(contextPath +
+		// "/gologin?sessionid="+null);
+		// }
+		// SSO
 		// 静态资源直接过
 		String[] sourceSuffixs = sourceSuffix.split(";");
 		String suffix = ServletPath.substring(ServletPath.lastIndexOf(".") + 1, ServletPath.length());
-		if(Arrays.asList(sourceSuffixs).contains(suffix)){
+		if (Arrays.asList(sourceSuffixs).contains(suffix)) {
 			chain.doFilter(hRequest, response);
 			return;
 		}
 		// 静态资源直接过
 		boolean needtLog = false;
 		String[] needLogurls = NeedtLogurls.split(";");
-		if(Arrays.asList(needLogurls).contains(ServletPath)){
+		if (Arrays.asList(needLogurls).contains(ServletPath)) {
 			chain.doFilter(hRequest, response);
 			return;
 		}
@@ -81,10 +84,9 @@ public class SessionFilter implements Filter {
 				return;
 			}
 			if (StringUtils.isEmpty(hRequest.getParameter(AdminYhkCommonConstant.SESSION_SYS_USER))) {
-				((HttpServletResponse) response).sendRedirect(contextPath + "/gologin?Nologcode=1&sessionid="+hRequest.getSession().getId());
+				((HttpServletResponse) response).sendRedirect(contextPath + "/html/login.html");
 			}
 		}
-		
 
 	}
 

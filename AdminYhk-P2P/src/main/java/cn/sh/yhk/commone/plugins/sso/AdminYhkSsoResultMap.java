@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.sh.yhk.p2p.model.User;
+import cn.sh.yhk.p2p.model.admin.User;
 import cn.sh.yhk.util.DateUtil;
 
 /**

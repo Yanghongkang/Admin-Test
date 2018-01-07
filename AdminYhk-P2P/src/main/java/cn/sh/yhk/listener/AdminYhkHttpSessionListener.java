@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.sh.yhk.commone.AdminYhkCommonConstant;
 import cn.sh.yhk.commone.plugins.sso.AdminYhkSsoResultMap;
-import cn.sh.yhk.p2p.model.User;
+import cn.sh.yhk.p2p.model.admin.User;
 
 @WebListener
 public class AdminYhkHttpSessionListener implements HttpSessionListener {

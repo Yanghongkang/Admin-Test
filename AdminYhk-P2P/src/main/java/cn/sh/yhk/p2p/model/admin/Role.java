@@ -1,26 +1,10 @@
-package cn.sh.yhk.p2p.model;
+package cn.sh.yhk.p2p.model.admin;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-@Entity
-@Table(name = "t_role")
 public class Role {
 
-	@Id
-	@GeneratedValue
 	private long id;
 
 	private String name;
@@ -33,10 +17,8 @@ public class Role {
 					@JoinColumn(name = "RESOURCE_ID", referencedColumnName = "ID") })
 	private List<Resource> resources;*/
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
 	public long getId() {
