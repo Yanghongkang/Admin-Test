@@ -10,13 +10,12 @@
 <title>首页</title>
 </head>
 <body>
-
 	<div class="layui-layout layui-layout-admin">
 		<div class="layui-header">
-			<div class="layui-logo">layui 后台布局</div>
+			<div class="layui-logo">AmdinYhk</div>
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-left">
-				<li class="layui-nav-item"><a href="">控制台</a></li>
+				<li class="layui-nav-item"><a href="javascript:;">控制台</a></li>
 				<li class="layui-nav-item"><a href="">商品管理</a></li>
 				<li class="layui-nav-item"><a href="">用户</a></li>
 				<li class="layui-nav-item"><a href="javascript:;">其它系统</a>
@@ -34,7 +33,7 @@
 			</ul>
 			<ul class="layui-nav layui-layout-right">
 				<li class="layui-nav-item"><a href="javascript:;"> <img
-						src="http://t.cn/RCzsdCq" class="layui-nav-img"> 贤心
+						src="http://t.cn/RCzsdCq" class="layui-nav-img">Yhk
 				</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -47,9 +46,16 @@
 				<li class="layui-nav-item"><a href="">退了</a></li>
 			</ul>
 		</div>
-
+		<iframe src="login.html" id="external-frame" frameborder="0" width="100%" frameborder="0" scrolling="no"></iframe>
 </body>
 <script>
+	window.onload = function() {
+		setIframeHeight(document.getElementById('external-frame'));
+	};
+	function setIframeHeight(iframe) {
+		iframe.height = document.documentElement.clientHeight;
+	};
+
 	layui.use([ 'jquery', 'element' ], function() {
 		var $ = layui.$;
 		var element = layui.element;

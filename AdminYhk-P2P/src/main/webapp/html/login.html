@@ -48,6 +48,28 @@
 			<button class="layui-btn" name="regeist" type="button">注册</button>
 		</div>
 	</form>
+	<div id="regeist"
+		style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300; display: none">
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<div class="layui-input-inline">
+						<input type="text" name="phone" autocomplete="off"
+							lay-verify="required" class="layui-input" placeholder="请输入用户名">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<div class="layui-input-inline">
+						<input type="password" name="phone" autocomplete="off"
+							lay-verify="required" class="layui-input" placeholder="请输入用密码">
+					</div>
+				</div>
+			</div>
+		</form>
+		<br>我们此后的征途是星辰大海 ^_^
+	</div>
 	<script>
 		layui.use([ 'jquery', 'layer', 'form', 'laydate' ], function() {
 			var $ = layui.$
@@ -59,11 +81,19 @@
 					area : '300px;',
 					shade : 0.8,
 					id : 'LAY_layuipro',
+					content : $("#regeist"),
 					btn : [ '注册', '取消' ],
 					btnAlign : 'c',
-					moveType : 1
+					moveType : 1,
+					success : function(layero) {
+						var reg_btn = layero.find('.layui-layer-btn0');
+						reg_btn.on("click", function() {
+						});
+						var reg_cannel = layero.find('.layui-layer-btn1');
+						reg_cannel.on("click", function() {
+						});
+					}
 				})
-				return false;
 			});
 		});
 	</script>
