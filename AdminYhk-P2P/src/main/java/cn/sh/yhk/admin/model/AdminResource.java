@@ -1,8 +1,8 @@
-package cn.sh.yhk.p2p.model.admin;
+package cn.sh.yhk.admin.model;
 
 import java.util.Date;
 
-public class Resource {
+public class AdminResource {
 	private long id;
 
 	private String name;

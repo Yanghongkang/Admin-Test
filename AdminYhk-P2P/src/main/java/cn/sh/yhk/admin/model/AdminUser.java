@@ -1,10 +1,10 @@
-package cn.sh.yhk.p2p.model.admin;
+package cn.sh.yhk.admin.model;
 
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class User {
+public class AdminUser {
 
 	private long id;
 	private String userNo;

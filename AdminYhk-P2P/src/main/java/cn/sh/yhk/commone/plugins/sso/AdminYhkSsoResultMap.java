@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.sh.yhk.p2p.model.admin.User;
+import cn.sh.yhk.admin.model.AdminUser;
 import cn.sh.yhk.util.DateUtil;
 
 /**
@@ -32,7 +32,7 @@ public class AdminYhkSsoResultMap {
 		return loginUserMap.get(key);
 	}
 
-	public synchronized void setLoginUserMap(User user, HttpSession session, String Vcode) {
+	public synchronized void setLoginUserMap(AdminUser user, HttpSession session, String Vcode) {
 		String unixTime = DateUtil.formatDate7(new Date());
 		String key = user.getUserNo() + user.getId() + user.getUserPwd().substring(10);
 		AdminYhkSsoObject sso = new AdminYhkSsoObject(session, unixTime, Vcode);

@@ -1,4 +1,4 @@
-package cn.sh.yhk.p2p.controller.admin;
+package cn.sh.yhk.admin.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

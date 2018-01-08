@@ -1,9 +1,9 @@
-package cn.sh.yhk.p2p.model.admin;
+package cn.sh.yhk.admin.model;
 
 import java.util.Date;
 
 
-public class Role {
+public class AdminRole {
 
 	private long id;
 
