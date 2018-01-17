@@ -15,15 +15,15 @@ import org.apache.hadoop.hdfs.protocol.DatanodeInfo;
 public class HDFSTest {
 	public static void main(String[] args) {
 		Configuration conf = new Configuration();
-		String uri = "hdfs://127.0.0.1:9000";
+		String uri = "hdfs://localhost:9000";
 		FileSystem fs = null;
 		try {
 
 			fs = FileSystem.get(URI.create(uri), conf);
-			// hadoopNodeStatus(fs);
-			// llAndDir(fs, "/");
+			//fs.create(new Path("/hbase"));
+			hadoopNodeStatus(fs);
+			 //llAndDir(fs, "/");
 			// delFile(fs, "/sd");
-			System.out.println(delFile(fs, "/tmp/testdir12"));
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -36,9 +36,10 @@ public class HDFSTest {
 			}
 		}
 	}
-	
+
 	/**
 	 * 删除文件
+	 * 
 	 * @param fs
 	 * @param pathOrFile
 	 * @return
@@ -54,8 +55,10 @@ public class HDFSTest {
 		}
 
 	}
+
 	/**
 	 * 检查文件是否存在
+	 * 
 	 * @param fs
 	 * @param pathOrFile
 	 * @return

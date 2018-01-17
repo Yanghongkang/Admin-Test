@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.sh.yhk.admin.mapper.AdminRoleMapper;
+import cn.sh.yhk.admin.mapper.AdminUserMapper;
 import cn.sh.yhk.admin.model.AdminUser;
 import cn.sh.yhk.commone.AdminYhkCommonConstant;
 import cn.sh.yhk.commone.AdminYhkResponseData;
@@ -33,7 +35,10 @@ public class LoginFilter implements Filter {
 	protected static Logger logger = LoggerFactory.getLogger(LoginFilter.class);
 
 	@Autowired
-	// private UserDao userdao;
+	private AdminUserMapper adminUserMapper;
+
+	@Autowired
+	AdminRoleMapper adminRoleMapper;
 
 	public static final String LOGIN_ERROR_NOUSER = "用户名未注册";
 
@@ -70,15 +75,14 @@ public class LoginFilter implements Filter {
 
 		if (!ncode.equals(vcode)) {
 			loginresponse.setSuccess(false);
-			loginresponse.setMessage("验证码错误");
+			loginresponse.setMsg("验证码错误");
 			write.println(JSON.toJSONString(loginresponse));
 			write.close();
 			return;
 		}
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
-		// User user = userdao.findByUserName(name);
-		AdminUser user = new AdminUser();
+		AdminUser user = adminUserMapper.queryAdminUserByName(name);
 		Enumeration<String> ss = httpRequest.getSession().getAttributeNames();
 		System.out.println(ss.nextElement());
 		try {
@@ -102,17 +106,14 @@ public class LoginFilter implements Filter {
 								.getAttribute(AdminYhkCommonConstant.SESSION_LOGIN_VCODE).toString());
 					}
 					// SSO結束
-
+					// role
+					user.setRole(adminRoleMapper.queryAdminRoleByUserId(user.getId()));
 					httpRequest.getSession().setAttribute(AdminYhkCommonConstant.SESSION_SYS_USER, user);
-					httpResponse.sendRedirect("/home/weclome");
-					/*
-					 * loginresponse.setSuccess(true); loginresponse.setMessage("登陆成功");
-					 * write.println(JSON.toJSONString(loginresponse)); write.close();
-					 */
+					httpResponse.sendRedirect("/html/main.html");
 					return;
 				} else {
 					loginresponse.setSuccess(false);
-					loginresponse.setMessage("密码错误");
+					loginresponse.setMsg("密码错误");
 					write.println(JSON.toJSONString(loginresponse));
 					write.flush();
 					write.close();
@@ -121,7 +122,7 @@ public class LoginFilter implements Filter {
 
 			} else {
 				loginresponse.setSuccess(false);
-				loginresponse.setMessage("没有找到该用户");
+				loginresponse.setMsg("没有找到该用户");
 				write.println(JSON.toJSONString(loginresponse));
 				write.flush();
 				write.close();

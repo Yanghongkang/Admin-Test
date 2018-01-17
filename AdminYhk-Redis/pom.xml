@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
-			<version>1.4.5.RELEASE</version>
+			<version>1.4.7.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>redis.clients</groupId>
